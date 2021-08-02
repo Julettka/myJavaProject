@@ -12,6 +12,7 @@ public class MainApp {
     public static char[][] map;
     public static Scanner sc = new Scanner(System.in);
     public static Random rand = new Random();
+
     public static void main(String[] args) {
         methodOne(15, 10);
         methodTwo(-8);
@@ -24,32 +25,11 @@ public class MainApp {
         methodNine();
         methodTen(8, 1);
         methodeLeven();
-        //checkWin('*');
         initMap();
         printMap();
-        while (true) {
-            humanTurn();
-            printMap();
-            if (checkWin(DOT_X)) {
-                System.out.println("Победил человек");
-                break;
-            }
-            if (isMapFull()) {
-                System.out.println("Ничья");
-                break;
-            }
-            aiTurn();
-            printMap();
-            if (checkWin(DOT_O)) {
-                System.out.println("Победил Искуственный Интеллект");
-                break;
-            }
-            if (isMapFull()) {
-                System.out.println("Ничья");
-                break;
-            }
-        }
-        System.out.println("Игра закончена");
+        humanTurn();
+        printMap();
+        uslovia();
     }
 
     public static boolean methodOne(int a, int b) {
@@ -163,17 +143,6 @@ public class MainApp {
         System.out.println(max);
     }
 
-    /* Задача 12. Крестики нолики проверка победы
-
-    public static int SIZE = 3;
-    public static int DOTS_TO_WIN = 3;
-    public static final char DOT_EMPTY = '•';
-    public static final char DOT_X = 'X';
-    public static final char DOT_O = 'O';
-    public static char[][] map;
-    public static Scanner sc = new Scanner(System.in);
-    public static Random rand = new Random();
-
     public static boolean checkWin(char symb) {
         int gor;
         int vert;
@@ -216,53 +185,6 @@ public class MainApp {
                 di2++;
             }
             if (di2 == SIZE) {
-                return true;
-            }
-        }
-        return false;
-    }*/
-    public static boolean checkWin(char symb) {
-        int gor;
-        int vert;
-        int di1;
-        int di2;
-        for (int i = 0; i < SIZE; i++) {
-            gor = 0;
-            for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == symb) {
-                    gor++;
-                }
-                if (gor == SIZE) {
-                    return true;
-                }
-            }
-        }
-        for (int i = 0; i < SIZE; i++) {
-            vert = 0;
-            for (int j = 0; j < SIZE; j++) {
-                if (map[j][i] == symb) {
-                    vert++;
-                }
-                if (vert == SIZE){
-                    return true;
-                }
-            }
-        }
-        di1 = 0;
-        for (int i = 0; i < SIZE; i++) {
-            if (map[i][i] == symb) {
-                di1++;
-            }
-            if (di1 == SIZE ) {
-                return true;
-            }
-        }
-        di2 = 0;
-        for (int i = 0; i<SIZE; i++){
-            if (map[i][SIZE-1-i]==symb){
-                di2++;
-            }
-            if (di2 == SIZE ){
                 return true;
             }
         }
@@ -328,5 +250,29 @@ public class MainApp {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static void uslovia() {
+        while (true) {
+            if (checkWin(DOT_X)) {
+                System.out.println("Победил человек");
+                break;
+            }
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
+            aiTurn();
+            printMap();
+            if (checkWin(DOT_O)) {
+                System.out.println("Победил Искуственный Интеллект");
+                break;
+            }
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
+        }
+        System.out.println("Игра закончена");
     }
 }
