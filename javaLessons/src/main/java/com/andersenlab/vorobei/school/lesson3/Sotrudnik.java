@@ -70,12 +70,12 @@ public class Sotrudnik {
     }
 
     public void info() {
-        System.out.println("FullName is " + fullName);
-        System.out.println("Position is " + position);
-        System.out.println("Email is " + email);
-        System.out.println("Phone Number is " + phoneNumber);
-        System.out.println("Salary is " + salary);
-        System.out.println("Age is " + age);
+        System.out.println("FullName is " + getFullName());
+        System.out.println("Position is " + getPosition());
+        System.out.println("Email is " + getEmail());
+        System.out.println("Phone Number is " + getPhoneNumber());
+        System.out.println("Salary is " + getSalary());
+        System.out.println("Age is " + getAge());
         System.out.println();
     }
 
