@@ -3,7 +3,7 @@ package Lesson5;
 import java.util.ArrayList;
 
 public class Fruit {
-    float weight;
+    private float weight;
 
     public Fruit(float weight) {
         this.weight = weight;
@@ -69,6 +69,10 @@ class Box<T extends Fruit> {
         addFru(list, list2);
         list.clear();
     }
+
+    public void dobavFrukt(T fruit) {
+        list.add(fruit);
+    }
 }
 
 class Test {
@@ -108,6 +112,12 @@ class Test {
         System.out.println("Пересыпали яблоки в свободную коробку");
         System.out.println("Количество элементов в списке свободной коробки: " + li.size());
         System.out.println("Количество элементов в списке коробки с яблоками: " + ap.size());
+
+        Apple ap4 = new Apple(1.0f);
+        boxApple.dobavFrukt(ap4);
+
+        System.out.println("Добавим 1 яблоко в коробку с яблоками");
+        System.out.println("Количество яблок в коробке с яблоками: " + ap.size());
     }
 
     public static void main(String[] args) {
