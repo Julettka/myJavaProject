@@ -6,15 +6,10 @@ public class Iskluchenia {
 
     public static int metod1(String[][] mas) throws MyArraySizeException, MyArrayDataException {
         int sum = 0;
-        if (mas.length != 4) {
-            System.out.println("Внимание! Не верный размер массива");
-            throw new MyArraySizeException("не верный размер массива");
-        }
         for (int i = 0; i < mas.length; i++) {
-            if (mas[i].length != 4) {
+            if ((mas[i].length != 4) || (mas.length != 4)) {
                 System.out.println("Внимание! Не верный размер массива");
                 throw new MyArraySizeException("не верный размер массива");
-
             }
         }
 
@@ -35,11 +30,19 @@ public class Iskluchenia {
     public static void main(String[] args) {
         Iskluchenia iskl = new Iskluchenia();
         String[][] m = new String[][]{{"1", "2", "3", "1"}, {"1", "2", "3", "1"}, {"2", "2", "2", "2"}, {"1", "2", "2", "8"}};
-        String[][] s = new String[][]{{"1", "2", "3", "8"}, {"2", "1", "3", "x"}, {"1", "2", "1", "8"}, {"2", "2", "3", "2"}};
-        String[][] n = new String[][]{{"1", "2", "3", "8"}, {"1", "2", "2", "8"}, {"2", "2", "3", "2"}};
+        String[][] s = new String[][]{{"1", "2", "3", "8"}, {"2", "1", "3", "f"}, {"1", "2", "1", "8"}, {"2", "2", "3", "2"}};
+        String[][] n = new String[][]{{"1", "2", "3", "8"}, {"1", "2", "2", "8"}, {"2", "3", "2"}, {"2", "2", "3", "2"}};
         try {
             iskl.metod1(m);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            e.printStackTrace();
+        }
+        try {
             iskl.metod1(s);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            e.printStackTrace();
+        }
+        try {
             iskl.metod1(n);
         } catch (MyArraySizeException | MyArrayDataException e) {
             e.printStackTrace();
