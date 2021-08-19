@@ -7,7 +7,7 @@ public class AppData {
     private static int[][] data = new int[][]{{100, 200, 123}, {300, 400, 500}};
 
     public static void zapis() {
-        try (FileWriter filewriter = new FileWriter("Test.csv")) {
+        try (FileWriter filewriter = new FileWriter("Test.csv", false)) {
             for (int i = 0; i < header.length; i++) {
                 filewriter.write(header[i] + ";");
             }
@@ -19,6 +19,8 @@ public class AppData {
                     filewriter.write(s + ";");
                 }
                 filewriter.write("\n");
+                filewriter.flush();
+                filewriter.close();
             }
             System.out.println("Записали массив int");
         } catch (IOException e) {
@@ -36,6 +38,7 @@ public class AppData {
                     System.out.print((char) buf[i]);
                 }
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
