@@ -19,10 +19,11 @@ public class AppData {
                     filewriter.write(s + ";");
                 }
                 filewriter.write("\n");
-                filewriter.flush();
-                filewriter.close();
             }
             System.out.println("Записали массив int");
+            filewriter.flush();
+            filewriter.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
